@@ -1,0 +1,23 @@
+{
+	"name": "weareknit/silverstripe-admin-google-map",
+	"description": "Display a Google Map in the Silverstripe CMS admin to set latitude and longitude data.",
+	"type": "silverstripe-module",
+	"homepage": "https://github.com/WeAreKnit/silverstripe-admin-google-map",
+	"keywords": ["silverstripe", "google", "map", "cms", "admin", "latitude", "longitude"],
+	"license": "BSD-3-Clause",
+	"authors": [
+		{"name": "Matt Kibbler", "email": "matt.kibbler@weareknit.co.uk"}
+	],
+	"support": {
+	  "issues": "https://github.com/WeAreKnit/silverstripe-admin-google-map/issues"
+	},
+	"require": {
+	  "silverstripe/cms": "~3.0",
+	  "silverstripe/framework": "~3.0"
+	},
+	"extra": {
+		"screenshots": [
+			"docs/screenshot.png"
+		]
+	}
+}
