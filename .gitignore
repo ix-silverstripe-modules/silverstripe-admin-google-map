@@ -1,0 +1,11 @@
+##### ignore everything...
+/*
+
+##### ...but
+!/src/
+!/docs/
+!/client/
+!/.gitignore
+!/_config.php
+!/composer.json
+!/README.md

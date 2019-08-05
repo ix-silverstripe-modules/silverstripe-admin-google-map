@@ -1,12 +1,14 @@
 <?php
 
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\View\Requirements;
 
-class GoogleMapField extends LiteralField {
-	
-	public function __construct($name, $options = array()) {
-
+class GoogleMapField extends LiteralField
+{
+	public function __construct($name, $options = [])
+    {
 		// Set map defaults
-		$defaults = array(
+		$defaults = [
 			"width" => "100%",
 			"height" => "500px",
 			"heading" => "",
@@ -17,7 +19,7 @@ class GoogleMapField extends LiteralField {
 			"map_zoom" => 10,
 			"start_lat" => "51.508515",
 			"start_lng" => "-0.125487"
-		);
+		];
 
 		// Merge provided options with defaults to create params
 		$params = array_replace_recursive($defaults, $options);
@@ -26,7 +28,7 @@ class GoogleMapField extends LiteralField {
 		$css = "style='width: " . $params['width'] . "; height: " . $params['height'] . ";'";
 
 		// Set up array to be fed to the JS
-		$js = array(
+		$js = [
 			"lat_field" => $params['lat_field'],
 			"lng_field" => $params['lng_field'],
 			"tab" => $params['tab'],
@@ -35,13 +37,13 @@ class GoogleMapField extends LiteralField {
 			"start_lat" => $params['start_lat'],
 			"start_lng" => $params['start_lng'],
 			"key" => GOOGLE_MAP_KEY
-		);
+		];
 
 		// Build content of form field
 
 		$content = "";
 
-		if($params['heading']) {
+		if ($params['heading']) {
 			$content .= "<h4>" . $params['heading'] . "</h4>";
 		}
 
@@ -50,17 +52,12 @@ class GoogleMapField extends LiteralField {
 		$this->content = $content;
 
 		// Establish requirements
-		Requirements::javascript(ADMIN_GOOGLE_MAP_DIR . "/javascript/admin-google-map.js");
+		Requirements::javascript(ADMIN_GOOGLE_MAP_DIR . "client/javascript/admin-google-map.js");
 
-		if(!$this->stat('jquery_included')) {
-			Requirements::javascript(THIRDPARTY_DIR."/jquery/jquery.js");
+		if (!$this->config()->get('jquery_included')) {
+			Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
 		}
 		
 		parent::__construct($name, $this->content);
-
 	}
-
-
 }
-
-?>
