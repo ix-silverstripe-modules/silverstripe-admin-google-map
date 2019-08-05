@@ -1,5 +1,7 @@
 <?php
 
+namespace WeAreKnit\SSAdminGoogleMap;
+
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\View\Requirements;
 
