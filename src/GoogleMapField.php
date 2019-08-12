@@ -54,7 +54,7 @@ class GoogleMapField extends LiteralField
 		$this->content = $content;
 
 		// Establish requirements
-		Requirements::javascript(ADMIN_GOOGLE_MAP_DIR . "client/javascript/admin-google-map.js");
+		Requirements::javascript("weareknit/silverstripe-admin-google-map: client/javascript/admin-google-map.js");
 
 		if (!$this->config()->get('jquery_included')) {
 			Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
