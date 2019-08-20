@@ -2,13 +2,20 @@
 
 namespace WeAreKnit\SSAdminGoogleMap;
 
+use SilverStripe\Core\Environment;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\View\Requirements;
 
 class GoogleMapField extends LiteralField
 {
 	public function __construct($name, $options = [])
-    {
+	{
+		$key = Environment::getEnv('GOOGLE_MAP_KEY');
+
+		if (!$key) {
+			return parent::__construct($name, '<p class="alert alert-secondary">Please set GOOGLE_MAP_KEY with a valid API key for the the Google Map field to work</p>');
+		}
+
 		// Set map defaults
 		$defaults = [
 			"width" => "100%",
@@ -16,7 +23,6 @@ class GoogleMapField extends LiteralField
 			"heading" => "",
 			"lng_field" => "Form_ItemEditForm_Lng",
 			"lat_field" => "Form_ItemEditForm_Lat",
-			"tab" => "Root_Location",
 			"address_field" => "Address",
 			"map_zoom" => 10,
 			"start_lat" => "51.508515",
@@ -33,12 +39,11 @@ class GoogleMapField extends LiteralField
 		$js = [
 			"lat_field" => $params['lat_field'],
 			"lng_field" => $params['lng_field'],
-			"tab" => $params['tab'],
 			"address_field" => $params['address_field'],
 			"zoom" => $params['map_zoom'],
 			"start_lat" => $params['start_lat'],
 			"start_lng" => $params['start_lng'],
-			"key" => GOOGLE_MAP_KEY
+			"key" => $key
 		];
 
 		// Build content of form field
@@ -54,12 +59,8 @@ class GoogleMapField extends LiteralField
 		$this->content = $content;
 
 		// Establish requirements
-		Requirements::javascript("weareknit/silverstripe-admin-google-map: client/javascript/admin-google-map.js");
+		Requirements::javascript("weareknit/silverstripe-admin-google-map:client/javascript/admin-google-map.js");
 
-		if (!$this->config()->get('jquery_included')) {
-			Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
-		}
-		
 		parent::__construct($name, $this->content);
 	}
 }
