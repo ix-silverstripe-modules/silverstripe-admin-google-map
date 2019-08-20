@@ -11,7 +11,6 @@
 		"latitude",
 		"longitude"
 	],
-	"homepage": "https://github.com/WeAreKnit/silverstripe-admin-google-map",
 	"license": "BSD-3-Clause",
 	"authors": [
 		{
@@ -19,9 +18,6 @@
 			"email": "matt.kibbler@weareknit.co.uk"
 		}
 	],
-	"support": {
-	  "issues": "https://github.com/WeAreKnit/silverstripe-admin-google-map/issues"
-	},
 	"require": {
 		"silverstripe/framework": "^4",
 		"silverstripe/cms": "^4"

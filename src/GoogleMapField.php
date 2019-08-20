@@ -18,40 +18,40 @@ class GoogleMapField extends LiteralField
 
 		// Set map defaults
 		$defaults = [
-			"width" => "100%",
-			"height" => "500px",
-			"heading" => "",
-			"lng_field" => "Form_ItemEditForm_Lng",
-			"lat_field" => "Form_ItemEditForm_Lat",
-			"address_field" => "Address",
-			"map_zoom" => 10,
-			"start_lat" => "51.508515",
-			"start_lng" => "-0.125487"
+			'width' => '100%',
+			'height' => '500px',
+			'heading' => '',
+			'lng_field' => 'Form_ItemEditForm_Lng',
+			'lat_field' => 'Form_ItemEditForm_Lat',
+			'address_field' => 'Address',
+			'map_zoom' => 10,
+			'start_lat' => '51.508515',
+			'start_lng' => '-0.125487',
 		];
 
 		// Merge provided options with defaults to create params
 		$params = array_replace_recursive($defaults, $options);
 
 		// Set css of map
-		$css = "style='width: " . $params['width'] . "; height: " . $params['height'] . ";'";
+		$css = "style='width: " . $params['width'] . '; height: ' . $params['height'] . ";'";
 
 		// Set up array to be fed to the JS
 		$js = [
-			"lat_field" => $params['lat_field'],
-			"lng_field" => $params['lng_field'],
-			"address_field" => $params['address_field'],
-			"zoom" => $params['map_zoom'],
-			"start_lat" => $params['start_lat'],
-			"start_lng" => $params['start_lng'],
-			"key" => $key
+			'lat_field' => $params['lat_field'],
+			'lng_field' => $params['lng_field'],
+			'address_field' => $params['address_field'],
+			'zoom' => $params['map_zoom'],
+			'start_lat' => $params['start_lat'],
+			'start_lng' => $params['start_lng'],
+			'key' => $key,
 		];
 
 		// Build content of form field
 
-		$content = "";
+		$content = '';
 
 		if ($params['heading']) {
-			$content .= "<h4>" . $params['heading'] . "</h4>";
+			$content .= '<h4>' . $params['heading'] . '</h4>';
 		}
 
 		$content .= "<div id='admin-map-" . $name . "' class='admin-google-map' " . $css . " data-setup='" . json_encode($js) . "'></div>";
@@ -59,7 +59,7 @@ class GoogleMapField extends LiteralField
 		$this->content = $content;
 
 		// Establish requirements
-		Requirements::javascript("weareknit/silverstripe-admin-google-map:client/javascript/admin-google-map.js");
+		Requirements::javascript('weareknit/silverstripe-admin-google-map:client/javascript/admin-google-map.js');
 
 		parent::__construct($name, $this->content);
 	}
