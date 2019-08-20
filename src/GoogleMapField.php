@@ -13,7 +13,7 @@ class GoogleMapField extends LiteralField
 		$key = Environment::getEnv('GOOGLE_MAP_KEY');
 
 		if (!$key) {
-			return parent::__construct($name, '<p class="alert alert-secondary">Please set GOOGLE_MAP_KEY with a valid API key for the the Google Map field to work</p>');
+			return parent::__construct($name, '<p class="alert alert-secondary">Please set GOOGLE_MAP_KEY with a valid API key for the Google Map field to work</p>');
 		}
 
 		// Set map defaults
